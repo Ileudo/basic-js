@@ -1,7 +1,7 @@
 const modernActivity = 15;
 const halfLifePeriod = 5730;
 
-module.exports = function dateSample(sampleActivity) {
+function dateSample(sampleActivity) {
 	if (typeof (sampleActivity) !== 'string'
 		|| isNaN(sampleActivity)
 		|| sampleActivity === ''
@@ -14,3 +14,5 @@ module.exports = function dateSample(sampleActivity) {
 	let numberOfHalfLifes = getBaseLog(activityDiff);
 	return Math.ceil(numberOfHalfLifes * halfLifePeriod);
 };
+
+console.log(dateSample('9000'));
