@@ -1,18 +1,28 @@
-const modernActivity = 15;
-const halfLifePeriod = 5730;
 
-function dateSample(sampleActivity) {
-	if (typeof (sampleActivity) !== 'string'
-		|| isNaN(sampleActivity)
-		|| sampleActivity === ''
-		|| +sampleActivity <= 0
-		|| +sampleActivity > modernActivity) return false;
-	let activityDiff = modernActivity / sampleActivity;
-	function getBaseLog(activityDiff) {
-		return Math.log(activityDiff) / 0.693;
+
+function createDreamTeam(members) {
+	let name = '';
+	if (Array.isArray(members) === false) return false;
+	members = members.filter((el) => typeof (el) === 'string' && /[A-Za-z]+/.test(el));
+	if (members === []) return false;
+	members = members.map((el) => el.replace(/\s+/g, '').charAt(0).toUpperCase());
+	members = members.sort();
+	console.log(members);
+	for (i = 0; i < members.length; i++) {
+		name += members[i].split('')[0];
 	}
-	let numberOfHalfLifes = getBaseLog(activityDiff);
-	return Math.ceil(numberOfHalfLifes * halfLifePeriod);
+	return name;
 };
-
-console.log(dateSample('9000'));
+console.log(createDreamTeam([
+	['David Abram'],
+	['Robin Attfield'],
+	'Thomas Berry',
+	['Paul R.Ehrlich'],
+	'donna Haraway',
+	' BrIaN_gOodWiN  ',
+	{
+		0: 'Serenella Iovino'
+	},
+	'Erazim Kohak',
+	'  val_plumwood',
+]));
