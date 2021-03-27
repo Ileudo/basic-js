@@ -1,5 +1,3 @@
-const CustomError = require("../extensions/custom-error");
-
 module.exports = function calculateHanoi(disksNumber, turnsSpeed) {
 	const obj = {
 		turns: 0,
