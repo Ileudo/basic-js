@@ -1,28 +1,11 @@
-
-
-function createDreamTeam(members) {
-	let name = '';
-	if (Array.isArray(members) === false) return false;
-	members = members.filter((el) => typeof (el) === 'string' && /[A-Za-z]+/.test(el));
-	if (members === []) return false;
-	members = members.map((el) => el.replace(/\s+/g, '').charAt(0).toUpperCase());
-	members = members.sort();
-	console.log(members);
-	for (i = 0; i < members.length; i++) {
-		name += members[i].split('')[0];
-	}
-	return name;
+function getSeason(date) {
+	let season;
+	if (!date) return 'Unable to determine the time of year!';
+	if ((Object.prototype.toString.apply(date)) !== '[object Date]') { throw new Error('Error') };
+	if (date.getMonth() <= 1 || date.getMonth() === 11) { season = 'winter' }
+	else if (date.getMonth() <= 4) { season = 'spring' }
+	else if (date.getMonth() <= 7) { season = 'summer' }
+	else if (date.getMonth() <= 10) { season = 'autumn' };
+	return season;
 };
-console.log(createDreamTeam([
-	['David Abram'],
-	['Robin Attfield'],
-	'Thomas Berry',
-	['Paul R.Ehrlich'],
-	'donna Haraway',
-	' BrIaN_gOodWiN  ',
-	{
-		0: 'Serenella Iovino'
-	},
-	'Erazim Kohak',
-	'  val_plumwood',
-]));
+
